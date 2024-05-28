@@ -18,6 +18,8 @@ export default async function Post({ params }: Params) {
 
   const content = await markdownToHtml(post.content || "");
 
+  const time="2020-03-16T05:35:07.322Z"
+
   return (
     <main>
       <Alert preview={post.preview} />
@@ -27,7 +29,7 @@ export default async function Post({ params }: Params) {
           <PostHeader
             title={post.title}
             coverImage={post.coverImage}
-            date={post.date}
+              date={time}
             author={post.author}
           />
           <PostBody content={content} />

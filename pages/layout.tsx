@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-import Header from "./_components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,7 +56,6 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className={inter.className}>
-        <Header></Header>
         <div className="min-h-screen">{children}</div>
         <Footer />
       </body>
