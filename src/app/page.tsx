@@ -2,7 +2,7 @@ import Container from "@/app/_components/container";
 import { HeroPost } from "@/app/_components/hero-post";
 import { Intro } from "@/app/_components/intro";
 import { MoreStories } from "@/app/_components/more-stories";
-import { getAllPosts } from "@/lib/api";
+
 import markdownToHtml from "@/lib/markdownToHtml";
 
 
@@ -17,12 +17,12 @@ interface Post {
 }
 
 
-export async function getPost(): Promise<Post[]> {
+ async function getPost(): Promise<Post[]> {
   // Fetch data from external API
 
 
   // const url=`http://192.168.195.87:8085/post/${postId}`
-  const url=`http://192.168.195.87:8085/posts`
+  const url=`http://64.227.132.173:8085/posts`
   const res = await fetch(url);
   const time="2020-03-16T05:35:07.322Z"
   const data = await res.json();

@@ -10,7 +10,8 @@ import DateFormatter from '@/app/_components/date-formatter';
 import CoverImage from '@/app/_components/cover-image';
 import Avatar from '@/app/_components/avatar';
 import Article from '@/app/_components/article_card';
-
+import Image from "next/image";
+import { PageProps } from '../../../../.next/types/app/page';
 interface Post {
   title: string;
   postcontent: string;
@@ -22,12 +23,12 @@ interface Post {
 
 
 
-export async function getRecentPost(): Promise<Post[]> {
+ async function getRecentPost(): Promise<Post[]> {
   // Fetch data from external API
 
 
   // const url=`http://192.168.195.87:8085/post/${postId}`
-  const url=`http://192.168.195.87:8085/posts`
+  const url=`http://64.227.132.173:8085/posts`
   const res = await fetch(url);
   const time="2020-03-16T05:35:07.322Z"
   const data = await res.json();
@@ -45,12 +46,12 @@ export async function getRecentPost(): Promise<Post[]> {
 }
 
 
-export async function getPost(postId:string): Promise<Post> {
+ async function getPost(postId:string): Promise<Post> {
   // Fetch data from external API
 
 
   // const url=`http://192.168.195.87:8085/post/${postId}`
-  const url=`http://192.168.195.87:8085/post/${postId}`
+  const url=`http://64.227.132.173:8085/post/${postId}`
   const res = await fetch(url);
   const post = await res.json();
   const time="2020-03-16T05:35:07.322Z"
@@ -70,7 +71,7 @@ export async function getPost(postId:string): Promise<Post> {
 }
 
 
-export default async function  PostPage({ params }: Params) {
+export default async function  PostPage({ params, searchParams }: PageProps) {
   
 
 
@@ -105,10 +106,14 @@ let author1={
         <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">Cybersecurity</button>
         <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">CVE</button>
         <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">Penetration test Test</button>
-        <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">Vulnariablity</button>
+        <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">Vulneriablity</button>
       </div>
-      <img className="-z-10 absolute top-0 left-0 mt-10 h-96 w-full object-cover" src="https://images.unsplash.com/photo-1638184984605-af1f05249a56?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-   </img> </header>
+
+      <Image className="-z-10 absolute top-0 left-0 mt-10 h-96 w-full object-cover"
+              src={'https://images.unsplash.com/photo-1638184984605-af1f05249a56?q=100&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} alt={'cover'} width={3480} height={0}
+    />
+      {/* <img className="-z-10 absolute top-0 left-0 mt-10 h-96 w-full object-cover" src="https://images.unsplash.com/photo-1638184984605-af1f05249a56?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""> */}
+    </header>
 
     <div className="mx-auto max-w-screen-lg space-y-12 rounded-b-lg bg-white px-8 pt-10 pb-20 font-serif text-lg tracking-wide text-gray-700 sm:shadow-lg">
 
